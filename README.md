@@ -5,9 +5,7 @@ but we need to run some simulations first to pick the correct fleet of rockets.
 
 ## Screenshots
 
-![image](./src/assets/images/screenshots/Capture1.png)
-![image](./src/assets/images/screenshots/Capture2.png)
-![image](./src/assets/images/screenshots/Capture3.png)
+![image](./src/assets/images/screenshots/Capture.png)
 
 ## Built With
 
