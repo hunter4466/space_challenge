@@ -31,13 +31,41 @@ open class Rocket(open val weightLmt: Int) : SpaceShip {
 class U1(weightLmt: Int = 8000) : Rocket(weightLmt) {
     val rocketCost: Int = 100000000
     val rocketWeight: Int = 10000
-    val launchExplChance: Int = 5
-    val landingCrshChance: Int = 1
+    val launchExplodeChance: Int = 5
+    val landingCrashChance: Int = 1
+    override fun launch(): Boolean {
+        var cargo: Int = 0
+        for (elm in payLoad) cargo += elm.weight!!
+        val newChance: Int = launchExplodeChance * (cargo / weightLmt)
+        if ((1..100).random() in 0..newChance) return false
+        return true
+    }
+    override fun land(): Boolean {
+        var cargo: Int = 0
+        for (elm in payLoad) cargo += elm.weight!!
+        val newChance: Int = landingCrashChance * (cargo / weightLmt)
+        if ((1..100).random() in 0..newChance) return false
+        return true
+    }
 }
 
 class U2(weightLmt: Int = 11000) : Rocket(weightLmt) {
     val rocketCost: Int = 120000000
     val rocketWeight: Int = 18000
-    val launchExplChance: Int = 4
-    val landingCrshChance: Int = 8
+    val launchExplodeChance: Int = 4
+    val landingCrashChance: Int = 8
+    override fun launch(): Boolean {
+        var cargo: Int = 0
+        for (elm in payLoad) cargo += elm.weight!!
+        val newChance: Int = launchExplodeChance * (cargo / weightLmt)
+        if ((1..100).random() in 0..newChance) return false
+        return true
+    }
+    override fun land(): Boolean {
+        var cargo: Int = 0
+        for (elm in payLoad) cargo += elm.weight!!
+        val newChance: Int = landingCrashChance * (cargo / weightLmt)
+        if ((1..100).random() in 0..newChance) return false
+        return true
+    }
 }
