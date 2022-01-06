@@ -20,13 +20,11 @@ open class Rocket(open val weightLmt: Int) : SpaceShip {
         return true
     }
     override fun carry(item: Item): Boolean {
-        payLoad.add(item)
-        return true
-    }
-    fun loadItem(item: Item) {
-        if (canCarry(item.weight as Int, weightLmt, payLoad)) {
-            carry(item)
+        if (canCarry(item.weight as Int, weightLmt, payLoad)){
+            payLoad.add(item)
+            return true
         }
+        return false
     }
 }
 
