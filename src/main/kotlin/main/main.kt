@@ -1,6 +1,6 @@
 package design.simulation.main
 
-import design.simulation.Simulation
+import design.simulation.simulation.Simulation
 
 class Main {
     val simulation1 = Simulation("https://s3.amazonaws.com/video.udacity-data.com/topher/2017/December/5a372d67_phase-1/phase-1.txt")
