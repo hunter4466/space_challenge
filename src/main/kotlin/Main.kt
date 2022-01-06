@@ -1,10 +1,8 @@
 package design.simulation
 
+import design.simulation.main.Main
+
 fun main(args: Array<String>) {
-    buildItem()
-}
-
-fun buildItem() {
-
-
+    val simulation = Main()
+    simulation.runSimulations()
 }
