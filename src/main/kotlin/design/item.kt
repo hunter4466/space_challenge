@@ -1,6 +1,6 @@
 package design
 
-abstract class Item () {
-    abstract var name: String
-    abstract var weight: Int
+class Item (name: String? = null, weight: Int? = null) {
+    var name: String? = name
+    var weight: Int? = weight
 }
