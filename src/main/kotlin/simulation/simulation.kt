@@ -2,6 +2,7 @@ package design.simulation
 import design.Item
 import design.Rocket
 import design.U1
+import design.U2
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -16,17 +17,31 @@ class Simulation(private val url: String) {
         }
         return itemsCollection
     }
-    fun loadU1(u1Rockets: ArrayList<U1> = arrayListOf()) {
+    fun loadU1(): ArrayList<U1> {
         val items: ArrayList<Item> = loadItems()
         val rockets: ArrayList<U1> = arrayListOf()
         fun fillRocket() {
-            val rocket: U1 = U1()
+            val rocket = U1()
             for(elm in items) {
                 if(rocket.carry(elm)) items.remove(elm)
             }
             rockets.add(rocket)
             if (items.size > 0) fillRocket()
         }
+        return rockets
+    }
+    fun loadU2(): ArrayList<U2> {
+        val items: ArrayList<Item> = loadItems()
+        val rockets: ArrayList<U2> = arrayListOf()
+        fun fillRocket() {
+            val rocket = U2()
+            for(elm in items) {
+                if(rocket.carry(elm)) items.remove(elm)
+            }
+            rockets.add(rocket)
+            if (items.size > 0) fillRocket()
+        }
+        return rockets
     }
 
 }

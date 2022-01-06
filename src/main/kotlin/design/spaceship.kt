@@ -28,9 +28,16 @@ open class Rocket(open val weightLmt: Int) : SpaceShip {
     }
 }
 
-class U1(weightLmt: Int = 18000) : Rocket(weightLmt) {
-    val rocketCost: Int = 120000000
+class U1(weightLmt: Int = 8000) : Rocket(weightLmt) {
+    val rocketCost: Int = 100000000
     val rocketWeight: Int = 10000
     val launchExplChance: Int = 5
     val landingCrshChance: Int = 1
+}
+
+class U2(weightLmt: Int = 11000) : Rocket(weightLmt) {
+    val rocketCost: Int = 120000000
+    val rocketWeight: Int = 18000
+    val launchExplChance: Int = 4
+    val landingCrshChance: Int = 8
 }
