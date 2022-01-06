@@ -2,15 +2,13 @@ package design.simulation.simulation
 import design.Item
 import design.U1
 import design.U2
-import java.net.HttpURLConnection
 import java.net.URL
 
 class Simulation(private val url: String) {
     private fun loadItems(): ArrayList<Item> {
         val itemsCollection: ArrayList<Item> = arrayListOf()
-        val conn = URL(url).openConnection() as HttpURLConnection
-        val responseBody = conn.inputStream.use { it.readBytes() }.toString(Charsets.UTF_8)
-        responseBody.reader().forEachLine {
+        val elements = URL(url).readText()
+        elements.reader().forEachLine {
             val arr = it.split("=")
             itemsCollection.add(Item(arr[0], arr[1].toInt()))
         }
