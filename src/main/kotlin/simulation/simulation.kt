@@ -60,19 +60,23 @@ class Simulation(private val url: String) {
         for(elm in u1Rockets) {
             fun launchRocket(rkt: U1) {
                 u1Budget += rkt.rocketCost
-                if (!rkt.launch()) launchRocket(rkt)
+                if (rkt.launch()) {
+                    if (!rkt.land())launchRocket(rkt)
+                }
             }
             launchRocket(elm)
         }
         for(elm in u2Rockets) {
             fun launchRocket(rkt: U2) {
                 u2Budget += rkt.rocketCost
-                if (!rkt.launch()) launchRocket(rkt)
+                if (rkt.launch()) {
+                    if (!rkt.land())launchRocket(rkt)
+                }
             }
             launchRocket(elm)
         }
-        println("U1 Mission total budget: $u1Budget")
-        println("U2 Mission total budget: $u2Budget")
+        println("U1 Mission total budget: $ $u1Budget.00")
+        println("U2 Mission total budget: $ $u2Budget.00")
         return true
     }
 }

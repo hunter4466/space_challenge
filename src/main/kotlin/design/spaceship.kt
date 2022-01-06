@@ -57,15 +57,16 @@ class U2(weightLmt: Int = 11000) : Rocket(weightLmt) {
     override fun launch(): Boolean {
         var cargo: Int = 0
         for (elm in payLoad) cargo += elm.weight!!
-        val newChance: Int = launchExplodeChance * (cargo / weightLmt)
-        if ((1..100).random() in 0..newChance) return false
+        val newChance: Double = launchExplodeChance * (cargo.toDouble() / weightLmt)
+        if ((1..100).random() in 0..newChance.toInt()) return false
         return true
     }
     override fun land(): Boolean {
         var cargo: Int = 0
         for (elm in payLoad) cargo += elm.weight!!
-        val newChance: Int = landingCrashChance * (cargo / weightLmt)
-        if ((1..100).random() in 0..newChance) return false
+        val newChance: Double = landingCrashChance * (cargo.toDouble() / weightLmt)
+        println(newChance.toInt())
+        if ((1..100).random() in 0..newChance.toInt()) return false
         return true
     }
 }
