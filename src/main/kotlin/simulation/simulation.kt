@@ -9,8 +9,8 @@ class Simulation(private val url: String) {
         val itemsCollection: ArrayList<Item> = arrayListOf()
         val elements = URL(url).readText()
         elements.reader().forEachLine {
-            val arr = it.split("=") //TODO: please use name of variable with meaning for the code, for example this could be name: rocketItems
-            itemsCollection.add(Item(arr[0], arr[1].toInt()))
+            val rocketItem = it.split("=")
+            itemsCollection.add(Item(rocketItem[0], rocketItem[1].toInt()))
         }
         return itemsCollection
     }
@@ -55,9 +55,12 @@ class Simulation(private val url: String) {
         val u2Rockets = loadU2()
         var u1Budget = 0
         var u2Budget = 0
+        var u1RocketCount = 0
+        var u2RocketCount = 0
         for(elm in u1Rockets) {
             fun launchRocket(rkt: U1) {
                 u1Budget += rkt.rocketCost
+                u1RocketCount += 1
                 if (rkt.launch()) {
                     if (!rkt.land())launchRocket(rkt)
                 }
@@ -67,15 +70,15 @@ class Simulation(private val url: String) {
         for(elm in u2Rockets) {
             fun launchRocket(rkt: U2) {
                 u2Budget += rkt.rocketCost
+                u2RocketCount += 1
                 if (rkt.launch()) {
                     if (!rkt.land())launchRocket(rkt)
                 }
             }
             launchRocket(elm)
         }
-        println("U1 Mission total budget: $ $u1Budget.00")
-        println("U2 Mission total budget: $ $u2Budget.00")
-        // TODO: output should indicate the count of rockets for each case.
+        println("U1 Mission total budget: $ $u1Budget.00 ($u1RocketCount Rockets Launched)")
+        println("U2 Mission total budget: $ $u2Budget.00 ($u2RocketCount Rockets Launched)")
         return true
     }
 }
