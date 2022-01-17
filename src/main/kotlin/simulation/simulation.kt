@@ -9,7 +9,7 @@ class Simulation(private val url: String) {
         val itemsCollection: ArrayList<Item> = arrayListOf()
         val elements = URL(url).readText()
         elements.reader().forEachLine {
-            val arr = it.split("=")
+            val arr = it.split("=") //TODO: please use name of variable with meaning for the code, for example this could be name: rocketItems
             itemsCollection.add(Item(arr[0], arr[1].toInt()))
         }
         return itemsCollection
@@ -44,7 +44,7 @@ class Simulation(private val url: String) {
                 }
                 rockets.add(rocket)
                 items = notLoadedItems
-                fillRocket()
+                fillRocket() //TODO: nice work with Recursion
             }
         }
         fillRocket()
@@ -75,6 +75,7 @@ class Simulation(private val url: String) {
         }
         println("U1 Mission total budget: $ $u1Budget.00")
         println("U2 Mission total budget: $ $u2Budget.00")
+        // TODO: output should indicate the count of rockets for each case.
         return true
     }
 }
